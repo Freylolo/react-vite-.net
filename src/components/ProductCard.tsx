@@ -1,6 +1,6 @@
 import type { ProductDto } from '../types/product';
 import { Plus } from 'lucide-react';
-import { useCartStore } from '../store/cartStore'
+import { useCartStore } from '../store/cartStore';
 
 type Props = {
   product: ProductDto;
@@ -9,10 +9,16 @@ type Props = {
   onEdit?: (id: number) => void;
 };
 
+const API_URL = import.meta.env.VITE_PUBLIC_URL;
+
 export default function ProductCard({ product, onClick, isAdmin = false, onEdit }: Props) {
-  const firstImg = product.imagenes?.[0]?.url;
   const { addToCart } = useCartStore();
 
+  const firstImg = product.imagenes?.[0]
+    ? `${API_URL.replace(/\/+$/, '')}/uploads/${product.imagenes[0]}`
+    : undefined;
+
+  const otherImgs = product.imagenes?.slice(1) ?? [];
 
   const handleCardClick = () => {
     if (onClick) onClick(product);
@@ -25,31 +31,49 @@ export default function ProductCard({ product, onClick, isAdmin = false, onEdit 
       onClick={onClick ? handleCardClick : undefined}
       tabIndex={onClick ? 0 : -1}
     >
+      {/* Imagen principal */}
       <div className="relative aspect-video w-full overflow-hidden rounded-xl bg-gray-100">
-  {firstImg ? (
-    <img
-      src={firstImg}
-      alt={product.nombre}
-      className="h-full w-full object-cover"
-      loading="lazy"
-    />
-  ) : (
-    <div className="h-full w-full grid place-content-center text-sm text-gray-500">
-      Sin imagen
-    </div>
-  )}
+        {firstImg ? (
+          <img
+            src={firstImg}
+            alt={product.nombre}
+            className="h-full w-full object-cover"
+            loading="lazy"
+          />
+        ) : (
+          <div className="h-full w-full grid place-content-center text-sm text-gray-500">
+            Sin imagen
+          </div>
+        )}
 
-  <button
-    onClick={(e) => {
-      e.stopPropagation();
-      addToCart(product);
-    }}
-    title="Agregar al carrito"
-    className="absolute bottom-2 right-2 z-10 rounded-full p-2 bg-white/90 shadow-lg backdrop-blur-md border border-gray-300 hover:bg-white transition"
-  >
-    <Plus className="w-4 h-4 text-gray-800" />
-  </button>
-</div>
+        <button
+          onClick={(e) => {
+            e.stopPropagation();
+            addToCart(product);
+          }}
+          title="Agregar al carrito"
+          className="absolute bottom-2 right-2 z-10 rounded-full p-2 bg-white/90 shadow-lg backdrop-blur-md border border-gray-300 hover:bg-white transition"
+        >
+          <Plus className="w-4 h-4 text-gray-800" />
+        </button>
+      </div>
+
+      {/* Galería de imágenes adicionales */}
+      {otherImgs.length > 0 && (
+        <div className="mt-2 flex gap-2 overflow-x-auto">
+          {otherImgs.map((img, index) => (
+            <img
+              key={index}
+              src={`${API_URL.replace(/\/+$/, '')}/uploads/${img}`}
+              alt={`Imagen ${index + 2}`}
+              className="h-16 w-24 object-cover rounded-md border"
+              loading="lazy"
+            />
+          ))}
+        </div>
+      )}
+
+      {/* Detalles del producto */}
       <div className="mt-3 flex items-start justify-between gap-2">
         <div className="min-w-0">
           <h3

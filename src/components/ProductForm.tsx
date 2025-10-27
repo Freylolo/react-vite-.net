@@ -27,6 +27,7 @@ export default function ProductForm({ initial, mode, onSubmit, submitting }: Pro
   const [files, setFiles] = useState<File[]>([]);
   const [previews, setPreviews] = useState<string[]>([]);
   const navigate = useNavigate();
+  
 
 
   useEffect(() => {

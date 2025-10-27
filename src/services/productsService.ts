@@ -65,11 +65,11 @@ export async function createProduct(
   files: File[]
 ): Promise<void> {
   const form = new FormData();
-
-  // Campos del producto (ajusta a tus nombres reales)
+  const precioNormalizado = String(dto.precio).replace(',', '.');
+  
   form.append('nombre', dto.nombre);
   if (dto.descripcion) form.append('descripcion', dto.descripcion);
-  form.append('precio', String(dto.precio));
+  form.append('precio', precioNormalizado); 
   form.append('disponible', String(dto.disponible ?? true));
 
   // Imágenes (máximo 3)
@@ -91,6 +91,7 @@ export async function createProduct(
     throw new Error(message);
   }
 }
+
 
 /* ----------------------------- UPDATE PRODUCT ----------------------------- */
 export async function updateProduct(
