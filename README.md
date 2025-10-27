@@ -70,5 +70,5 @@ Este proyecto se conecta con el backend disponible en:
 
 1. Clona el repositorio:
    ```bash
-   git clone [https://github.com/TuUsuario/prueba-frontend.git](https://github.com/Freylolo/react-vite-.net.git)
+   git clone (https://github.com/Freylolo/react-vite-.net.git)
    cd prueba-frontend
