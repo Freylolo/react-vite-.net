@@ -42,3 +42,40 @@ export async function updateUser(id: number, data: Partial<UserDto> & { password
   if (!res.ok) throw new Error('Error al actualizar usuario');
 }
 
+export async function deleteUser(id: number): Promise<void> {
+  const token = getToken();
+  const res = await fetch(`${API_URL}/users/${id}`, {
+    method: 'DELETE',
+     headers: {
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${token}`,
+    },
+  });
+  if (res.status !== 204) {
+    const txt = await res.text();
+    throw new Error(`No se pudo eliminar la cuenta. HTTP ${res.status}: ${txt}`);
+  }
+}
+export async function getAllUsers(): Promise<UserDto[]> {
+  const token = getToken();
+  const res = await fetch(`${API_URL}/users`, {
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${token}`,
+    },
+  });
+
+  if (!res.ok) {
+    const txt = await res.text();
+    throw new Error(`No se pudo obtener usuarios. HTTP ${res.status}: ${txt}`);
+  }
+
+  const list: UserDto[] = await res.json();
+
+return list.map((u, idx) => ({
+  ...u,
+  id: Number(u.id ?? idx + 1),
+}));
+}
+
+

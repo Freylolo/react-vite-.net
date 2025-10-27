@@ -60,9 +60,6 @@ export function getUserRoleFromToken(): string | null {
     normalizeRole(p.roles) ??
     normalizeRole(p['http://schemas.microsoft.com/ws/2008/06/identity/claims/role']);
 
-  console.log('Payload JWT:', p);
-  console.log('Rol decodificado del token:', role);
-
   return role;
 }
 

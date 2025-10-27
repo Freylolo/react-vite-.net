@@ -37,7 +37,7 @@ export default function Header() {
                 Perfil
               </button>
               {isAdmin && (
-                <button onClick={() => navigate('/users')} className="hover:text-[#5B4033]">
+                <button onClick={() => navigate('/gestor')} className="hover:text-[#5B4033]">
                   Gestión de usuarios
                 </button>
               )}

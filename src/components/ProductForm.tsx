@@ -165,7 +165,7 @@ export default function ProductForm({ initial, mode, onSubmit, submitting }: Pro
       <button
         type="submit"
         disabled={submitting}
-        className="px-4 py-2 rounded-xl border border-gray-300 text-gray-800 hover:bg-gray-100 disabled:opacity-60"
+        className="px-4 py-2 rounded-xl border border-blue-300 text-gray-800 hover:bg-gray-100 disabled:opacity-60"
       >
         {submitting ? 'Guardando...' : mode === 'create' ? 'Crear producto' : 'Guardar cambios'}
       </button>

@@ -7,6 +7,7 @@ import ProductCreatePage from './app/ProductCreatePage';
 import ProductEditPage from './app/ProductEditPage';
 import BuysPage from './app/BuysPage';
 import ProfilePage from './app/ProfilePage';
+import UsersGestorPage from './app/UsersGestorPage';
 
 function Layout() {
   const location = useLocation();
@@ -25,6 +26,7 @@ function Layout() {
         <Route path="/products/:id/edit" element={<ProductEditPage />} />
         <Route path="/buys" element={<BuysPage />} />
         <Route path="/profile" element={<ProfilePage />} />
+        <Route path="/gestor" element={<UsersGestorPage />} />
       </Routes>
     </>
   );

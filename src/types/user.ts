@@ -10,4 +10,6 @@ export interface UserDto {
   nombre: string;
   apellido: string;
   correo: string;
+  rol: string;
+  activo: boolean;
 }
