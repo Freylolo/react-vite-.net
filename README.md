@@ -1,73 +1,74 @@
-# React + TypeScript + Vite
+#  Prueba Frontend
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Frontend desarrollado en **React + Vite + TypeScript** para la gestión de productos, con integración a un backend ASP.NET Core Web API.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+##  Backend
 
-## React Compiler
+Este proyecto se conecta con el backend disponible en:
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+**Repositorio:** [Freylolo/Prueba1.WebApi](https://github.com/Freylolo/Prueba1.WebApi)
 
-## Expanding the ESLint configuration
+**Tecnología:** ASP.NET Core 8.0  
+**Ruta base de la API:** `http://localhost:5258/api`  
+**Ruta pública de archivos:** `http://localhost:5258/uploads`
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+---
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+##  Tecnologías principales
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+- **React 19**
+- **Vite 7**
+- **TypeScript 5.9**
+- **TailwindCSS 3.4**
+- **Zustand** (gestión de estado)
+- **Styled Components**
+- **React Router DOM 7**
+- **SweetAlert2** (alertas interactivas)
+- **Framer Motion** (animaciones)
+- **Lucide React** (íconos SVG)
+- **Headless UI** (componentes accesibles)
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+---
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## Scripts disponibles
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+| Script     | Descripción                                 |
+|------------|---------------------------------------------|
+| `dev`      | Inicia el servidor de desarrollo con Vite   |
+| `build`    | Compila TypeScript y genera el build final  |
+| `lint`     | Ejecuta ESLint sobre el proyecto            |
+| `preview`  | Previsualiza el build generado              |
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+---
+
+## Estructura de módulos
+
+### Dependencias
+
+- `react`, `react-dom`: núcleo de la aplicación
+- `react-router-dom`: navegación entre vistas
+- `zustand`: manejo de estado global
+- `styled-components`: estilos con CSS-in-JS
+- `sweetalert2`, `sweetalert2-react-content`: alertas personalizadas
+- `framer-motion`: animaciones fluidas
+- `lucide-react`: íconos modernos
+- `@headlessui/react`: componentes accesibles
+
+### DevDependencies
+
+- `vite`, `@vitejs/plugin-react`: entorno de desarrollo moderno
+- `typescript`, `tsc`: tipado estático
+- `eslint`, `typescript-eslint`: análisis de código
+- `tailwindcss`, `postcss`, `autoprefixer`: estilos utilitarios
+- `@types/*`: definiciones de tipos para TypeScript
+
+---
+
+## Configuración del entorno
+
+1. Clona el repositorio:
+   ```bash
+   git clone https://github.com/TuUsuario/prueba-frontend.git
+   cd prueba-frontend
